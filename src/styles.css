@@ -1,0 +1,215 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * NEO-BRUTALISM DESIGN SYSTEM
+ * Exact palette, hard shadows, zero blur, zero gradients.
+ */
+
+@theme inline {
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+
+  --font-sans:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  --font-display:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  --font-system:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-brut-red: var(--brut-red);
+  --color-brut-yellow: var(--brut-yellow);
+  --color-brut-violet: var(--brut-violet);
+  --color-brut-hot: var(--brut-hot);
+
+
+  --animate-marquee: marquee 22s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 22s linear infinite;
+  --animate-float-slow: float-slow 6s ease-in-out infinite;
+  --animate-star-bounce: star-bounce 1.2s ease-in-out infinite;
+}
+
+@keyframes star-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+:root {
+  --radius: 0px;
+
+  /* raw palette */
+  --ink: #000000;
+  --cream: #fffdf5;
+  --paper: #ffffff;
+  --brut-red: #ff6b6b;
+  --brut-yellow: #ffd93d;
+  --brut-violet: #c4b5fd;
+  --brut-hot: #ff3101;
+
+
+  /* semantic */
+  --background: #fffdf5;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #ff6b6b;
+  --primary-foreground: #000000;
+  --secondary: #ffd93d;
+  --secondary-foreground: #000000;
+  --muted: #c4b5fd;
+  --muted-foreground: #000000;
+  --accent: #c4b5fd;
+  --accent-foreground: #000000;
+  --destructive: #ff6b6b;
+  --destructive-foreground: #000000;
+  --border: #000000;
+  --input: #000000;
+  --ring: #000000;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--ink);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
+  ::selection {
+    background-color: var(--brut-yellow);
+    color: var(--ink);
+  }
+}
+
+@utility texture-dots {
+  background-image: radial-gradient(#000 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  opacity: 0.08;
+}
+
+@utility texture-dots-strong {
+  background-image: radial-gradient(#000 2px, transparent 2px);
+  background-size: 22px 22px;
+  opacity: 0.28;
+}
+
+
+@utility texture-grid {
+  background-image:
+    linear-gradient(to right, #000 1px, transparent 1px),
+    linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.07;
+}
+
+@utility text-stroke-ink {
+  color: transparent;
+  -webkit-text-stroke: 3px #000000;
+  paint-order: stroke fill;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .rm-safe-rotate {
+    transform: none !important;
+  }
+}
+
+@utility edge-zigzag {
+  height: 22px;
+  background-color: var(--ink);
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg)
+    50% / 22px 100% repeat-x;
+  mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% /
+    22px 100% repeat-x;
+}
+
+@utility font-system {
+  font-family: var(--font-system);
+}
